@@ -20,6 +20,7 @@ class ProfilePage extends StatelessWidget {
             children: [
               Text(email, textAlign: TextAlign.center),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                 onPressed: () {
                   Navigator.pushAndRemoveUntil(
                     context,
