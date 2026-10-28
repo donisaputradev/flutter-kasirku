@@ -57,13 +57,10 @@ class _LoginPageState extends State<LoginPage> {
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushNamed(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return RegisterPage();
-                      },
-                    ),
+                    '/login',
+                    arguments: {'email': emailController.text},
                   );
                 },
                 child: Text('Daftar Akun'),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kasirku/pages/login.dart';
 
-import 'pages/login.dart';
+import 'routes.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,7 +13,8 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
+      onGenerateRoute: routes,
       theme: ThemeData(
         inputDecorationTheme: InputDecorationThemeData(
           border: OutlineInputBorder(),
