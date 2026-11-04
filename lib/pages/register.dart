@@ -61,9 +61,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 validator: (value) {
                   if (value != null) {
                     if (value.isEmpty) {
-                      return 'Email tidak boleh kosong!';
-                    } else if (!value.contains('@')) {
-                      return 'Format email tidak valid!';
+                      return 'Nama tidak boleh kosong!';
+                    } else if (value.length < 3) {
+                      return 'Nama minimal 3 karakter';
                     }
                   }
 
