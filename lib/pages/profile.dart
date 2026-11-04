@@ -59,7 +59,7 @@ class ProfilePage extends StatelessWidget {
               ),
               child: Text('Keluar'),
             ),
-            RegularText(text: 'v1.0.0', textAlign: TextAlign.center),
+            RegularText(text: 'v1.0.0+1', textAlign: TextAlign.center),
           ],
         ),
       ),
