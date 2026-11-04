@@ -1,7 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
-import 'profile.dart';
-import 'register.dart';
+import 'package:kasirku/colors.dart';
+import 'package:kasirku/components/components.dart';
+import 'package:kasirku/pages/main.dart';
+import 'package:kasirku/pages/register.dart';
 
 class LoginPage extends StatefulWidget {
   const new({super.key});
@@ -11,6 +13,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -23,49 +26,113 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Kasirku')),
-      body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            spacing: 12,
-            children: [
-              TextField(
-                controller: emailController,
-                decoration: InputDecoration(hintText: 'Masukkan email'),
-              ),
-              TextField(
-                controller: passwordController,
-                decoration: InputDecoration(hintText: 'Masukkan password'),
-                obscureText: true,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return ProfilePage(email: emailController.text);
-                      },
+    return Form(
+      key: _formKey,
+      child: Scaffold(
+        body: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              spacing: 16,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 4,
+                  children: [
+                    HeadingText(
+                      text: 'Selamat Datang',
+                      color: AppColors.primary,
                     ),
-                    (_) => false,
-                  );
-                },
-                child: Text('Masuk Sekarang'),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/login',
-                    arguments: {'email': emailController.text},
-                  );
-                },
-                child: Text('Daftar Akun'),
-              ),
-            ],
+                    RegularText(text: 'Hi, silakan masuk untuk melanjutkan'),
+                  ],
+                ),
+                SizedBox(height: 24),
+                SizedBox(
+                  height: 165,
+                  child: Image.asset(
+                    'assets/images/illustration-login.png',
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                SizedBox(height: 24),
+                RegularFormInput(
+                  controller: emailController,
+                  hintText: 'Email',
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (value != null) {
+                      if (value.isEmpty) {
+                        return 'Email tidak boleh kosong!';
+                      } else if (!value.contains('@')) {
+                        return 'Format email tidak valid!';
+                      }
+                    }
+
+                    return null;
+                  },
+                ),
+                PasswordFormInput(
+                  controller: passwordController,
+                  hintText: 'Password',
+                  validator: (value) {
+                    if (value != null) {
+                      if (value.isEmpty) {
+                        return 'Password tidak boleh kosong!';
+                      } else if (value.length < 6) {
+                        return 'Password minimal 6 karakter!';
+                      }
+                    }
+
+                    return null;
+                  },
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      onTap: () {},
+                      child: Text('Lupa password?'),
+                    ),
+                  ],
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState?.validate() == true) {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (_) => MainPage()),
+                        (_) => false,
+                      );
+                    }
+                  },
+                  child: Text('Masuk'),
+                ),
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text: 'Belum punya akun? ',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    children: [
+                      TextSpan(
+                        text: 'Daftar',
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (_) => RegisterPage()),
+                            );
+                          },
+                        style: TextStyle(
+                          color: AppColors.primary,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
