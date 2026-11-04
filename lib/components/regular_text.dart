@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kasirku/extentions/theme_extention.dart';
 
 class RegularText extends StatelessWidget {
   const new({
@@ -36,8 +37,11 @@ class RegularText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: Theme.of(context).textTheme.bodyMedium
-          ?.copyWith(fontSize: size, color: color, fontWeight: weight),
+      style: context.theme.textTheme.bodyMedium?.copyWith(
+        fontSize: size,
+        color: color,
+        fontWeight: weight,
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kasirku/extentions/theme_extention.dart';
 
 class HeadingText extends StatelessWidget {
   const new({
@@ -21,8 +22,11 @@ class HeadingText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: Theme.of(context).textTheme.headlineSmall
-          ?.copyWith(fontSize: size, color: color, fontWeight: weight),
+      style: context.theme.textTheme.headlineSmall?.copyWith(
+        fontSize: size,
+        color: color,
+        fontWeight: weight,
+      ),
     );
   }
 }

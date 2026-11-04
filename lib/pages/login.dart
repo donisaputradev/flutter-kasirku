@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:kasirku/colors.dart';
 import 'package:kasirku/components/components.dart';
+import 'package:kasirku/extentions/theme_extention.dart';
 import 'package:kasirku/pages/main.dart';
 import 'package:kasirku/pages/register.dart';
 
@@ -112,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                   textAlign: TextAlign.center,
                   text: TextSpan(
                     text: 'Belum punya akun? ',
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    style: context.theme.textTheme.bodyMedium,
                     children: [
                       TextSpan(
                         text: 'Daftar',

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kasirku/colors.dart';
 
 class AppThemes {
-  static ThemeData light() {
+  static ThemeData get light {
     return ThemeData(
       fontFamily: 'Poppins',
       primaryColor: AppColors.primary,

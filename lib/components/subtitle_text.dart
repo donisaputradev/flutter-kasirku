@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kasirku/extentions/theme_extention.dart';
 
 class SubtitleText extends StatelessWidget {
   const new({
@@ -21,8 +22,11 @@ class SubtitleText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: Theme.of(context).textTheme.titleMedium
-          ?.copyWith(fontSize: size, color: color, fontWeight: weight),
+      style: context.theme.textTheme.titleMedium?.copyWith(
+        fontSize: size,
+        color: color,
+        fontWeight: weight,
+      ),
     );
   }
 }
