@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kasirku/cashier.dart';
-import 'package:kasirku/history.dart';
-import 'package:kasirku/home.dart';
+import 'package:kasirku/pages/cashier.dart';
+import 'package:kasirku/pages/history.dart';
+import 'package:kasirku/pages/home.dart';
 import 'package:kasirku/pages/profile.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
