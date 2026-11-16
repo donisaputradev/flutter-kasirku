@@ -8,6 +8,7 @@ class RegularFormInput extends StatelessWidget {
     this.validator,
     this.onChanged,
     this.keyboardType,
+    this.icon,
   });
 
   final TextEditingController controller;
@@ -15,12 +16,13 @@ class RegularFormInput extends StatelessWidget {
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
   final TextInputType? keyboardType;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      decoration: InputDecoration(hintText: hintText),
+      decoration: InputDecoration(hintText: hintText, prefixIcon: icon),
       validator: validator,
       onChanged: onChanged,
       keyboardType: keyboardType,

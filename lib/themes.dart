@@ -10,6 +10,7 @@ class AppThemes {
       scaffoldBackgroundColor: AppColors.white,
       colorScheme: ColorScheme.light(secondary: AppColors.secondary),
       appBarTheme: AppBarThemeData(
+        centerTitle: false,
         backgroundColor: AppColors.white,
         titleSpacing: 24,
         foregroundColor: AppColors.primary,
@@ -72,6 +73,17 @@ class AppThemes {
           ),
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.white,
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+          textStyle: textTheme.titleMedium,
+        ),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          side: BorderSide(color: AppColors.primary),
+          foregroundColor: AppColors.primary,
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
           textStyle: textTheme.titleMedium,
         ),

@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   lucide_icons_flutter: ^4.0.1
+  intl: ^0.20.3
 
 dev_dependencies:
   flutter_test:
