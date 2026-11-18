@@ -19,16 +19,11 @@ class ProfilePage extends StatelessWidget {
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              spacing: 6,
               children: [
-                SizedBox(
-                  height: 100,
-                  child: ClipRRect(
-                    borderRadius: BorderRadiusGeometry.circular(100),
-                    child: Image.asset(
-                      'assets/images/profile.jpg',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                CircleAvatar(
+                  radius: 52,
+                  foregroundImage: AssetImage('assets/images/profile.jpg'),
                 ),
                 SubtitleText(text: 'Mentor Doni', textAlign: TextAlign.center),
               ],

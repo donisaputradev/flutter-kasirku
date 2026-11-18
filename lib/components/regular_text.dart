@@ -9,6 +9,8 @@ class RegularText extends StatelessWidget {
     this.size,
     this.textAlign,
     this.weight,
+    this.maxLines,
+    this.overflow,
   });
 
   final String text;
@@ -16,6 +18,8 @@ class RegularText extends StatelessWidget {
   final Color? color;
   final TextAlign? textAlign;
   final FontWeight? weight;
+  final int? maxLines;
+  final TextOverflow? overflow;
 
   factory RegularText.semiBold(
     String text, {
@@ -42,6 +46,8 @@ class RegularText extends StatelessWidget {
         color: color,
         fontWeight: weight,
       ),
+      maxLines: maxLines,
+      overflow: overflow,
     );
   }
 }

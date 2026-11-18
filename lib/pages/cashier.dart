@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:kasirku/colors.dart';
 import 'package:kasirku/components/components.dart';
 import 'package:kasirku/pages/checkout.dart';
+import 'package:kasirku/pages/product.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 class CashierPage extends StatefulWidget {
@@ -18,7 +19,23 @@ class _CashierPageState extends State<CashierPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Kasir')),
+      appBar: AppBar(
+        title: Text('Kasir'),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => ProductPage()),
+                );
+              },
+              icon: Icon(LucideIcons.package),
+            ),
+          ),
+        ],
+      ),
       body: Column(
         children: [
           Padding(
@@ -31,8 +48,8 @@ class _CashierPageState extends State<CashierPage> {
           ),
           Expanded(
             child: GridView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-              itemCount: 3,
+              padding: const EdgeInsets.fromLTRB(24, 12, 24, 100),
+              itemCount: 7,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 12,

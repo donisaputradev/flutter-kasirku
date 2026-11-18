@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kasirku/colors.dart';
 import 'package:kasirku/components/components.dart';
+import 'package:kasirku/pages/manage.dart';
 
 class CardProduct extends StatelessWidget {
-  const new({super.key});
+  const new({super.key, this.isProductPage = false});
+
+  final bool isProductPage;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,6 @@ class CardProduct extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        spacing: 12,
         children: [
           Expanded(
             child: Container(
@@ -29,23 +31,78 @@ class CardProduct extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.network(
-                  'https://picsum.org/id/1001023513/800/600.jpg',
+                  'https://ui-avatars.com/api/?name=Buah+Mangga&background=random',
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
-          RegularText(text: 'Organic Potato Organic Potato Organic Potato'),
-          SubtitleText(text: '21.000 / kg'),
-          OutlinedButton(
-            onPressed: () {},
-            style: OutlinedButton.styleFrom(
-              fixedSize: Size(double.infinity, 28),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-            child: Text('Tambah', style: TextStyle(fontSize: 12)),
+          SizedBox(height: 4),
+          RegularText(
+            text: 'Buah Mangga',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.start,
           ),
+          SizedBox(height: 2),
+          SubtitleText(text: '21.000 / kg'),
+          SizedBox(height: 8),
+          isProductPage
+              ? SizedBox(
+                  height: 32,
+                  child: Row(
+                    spacing: 12,
+                    children: [
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadiusGeometry.circular(8),
+                            ),
+                            backgroundColor: AppColors.danger,
+                          ),
+                          child: Text('Hapus', style: TextStyle(fontSize: 12)),
+                        ),
+                      ),
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return ManagePage(produk: 'Buah Mangga');
+                                },
+                              ),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadiusGeometry.circular(8),
+                            ),
+                          ),
+                          child: Text('Edit', style: TextStyle(fontSize: 12)),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              : SizedBox(
+                  height: 32,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadiusGeometry.circular(8),
+                      ),
+                    ),
+                    child: Text('Tambah', style: TextStyle(fontSize: 12)),
+                  ),
+                ),
         ],
       ),
     );
