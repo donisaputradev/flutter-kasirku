@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:kasirku/components/regular_form_input.dart';
 
 class ManagePage extends StatefulWidget {

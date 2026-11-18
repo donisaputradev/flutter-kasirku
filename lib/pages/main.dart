@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:kasirku/pages/cashier.dart';
 import 'package:kasirku/pages/history.dart';
 import 'package:kasirku/pages/home.dart';
