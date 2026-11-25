@@ -1,12 +1,23 @@
+import 'package:kasirku/extentions/currency_extension.dart';
+import 'package:kasirku/models/product_model.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:kasirku/colors.dart';
 import 'package:kasirku/components/components.dart';
 import 'package:kasirku/pages/manage.dart';
 
-class CardProduct extends StatelessWidget {
-  const new({super.key, this.isProductPage = false});
+class CardProduct extends StatefulWidget {
+  const new({super.key, this.isProductPage = false, required this.data});
 
   final bool isProductPage;
+  final ProductModel data;
+
+  @override
+  State<CardProduct> createState() => _CardProductState();
+}
+
+class _CardProductState extends State<CardProduct> {
+  int qty = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -30,24 +41,23 @@ class CardProduct extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  'https://ui-avatars.com/api/?name=Buah+Mangga&background=random',
-                  fit: BoxFit.cover,
-                ),
+                child: Image.network(widget.data.image, fit: BoxFit.cover),
               ),
             ),
           ),
           SizedBox(height: 4),
           RegularText(
-            text: 'Buah Mangga',
+            text: widget.data.name,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.start,
           ),
           SizedBox(height: 2),
-          SubtitleText(text: '21.000 / kg'),
+          SubtitleText(
+            text: '${widget.data.price.currency} / ${widget.data.unit}',
+          ),
           SizedBox(height: 8),
-          isProductPage
+          widget.isProductPage
               ? SizedBox(
                   height: 32,
                   child: Row(
@@ -90,10 +100,60 @@ class CardProduct extends StatelessWidget {
                     ],
                   ),
                 )
+              : qty > 0
+              ? Container(
+                  height: 32,
+                  decoration: BoxDecoration(
+                    color: AppColors.secondary.withValues(alpha: .3),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          minimumSize: Size(32, 36),
+                          padding: EdgeInsets.all(6),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            qty = qty - 1;
+                          });
+                        },
+                        child: Icon(LucideIcons.minus),
+                      ),
+                      Expanded(
+                        child: Text('$qty', textAlign: TextAlign.center),
+                      ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(32, 36),
+                          padding: EdgeInsets.all(6),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            qty = qty + 1;
+                          });
+                        },
+                        child: Icon(LucideIcons.plus),
+                      ),
+                    ],
+                  ),
+                )
               : SizedBox(
                   height: 32,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        qty = qty + 1;
+                      });
+                    },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.zero,
                       shape: RoundedRectangleBorder(

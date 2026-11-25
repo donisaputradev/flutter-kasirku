@@ -1,3 +1,4 @@
+import 'package:kasirku/models/product_model.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:intl/intl.dart';
 import 'package:kasirku/colors.dart';
@@ -15,6 +16,30 @@ class CashierPage extends StatefulWidget {
 
 class _CashierPageState extends State<CashierPage> {
   final searchController = TextEditingController();
+
+  final List<ProductModel> products = [
+    ProductModel(
+      id: 'PRD-001',
+      image: 'https://ui-avatars.com/api/?name=Buah+Anggur&background=random',
+      name: 'Buah Anggur',
+      price: 5000,
+      unit: 'Ons',
+    ),
+    ProductModel(
+      id: 'PRD-002',
+      image: 'https://ui-avatars.com/api/?name=Buah+Rambutan&background=random',
+      name: 'Buah Rambutan',
+      price: 15000,
+      unit: 'Kg',
+    ),
+    ProductModel(
+      id: 'PRD-003',
+      image: 'https://ui-avatars.com/api/?name=Buah+Mangga&background=random',
+      name: 'Buah Mangga',
+      price: 25000,
+      unit: 'Kg',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +74,7 @@ class _CashierPageState extends State<CashierPage> {
           Expanded(
             child: GridView.builder(
               padding: const EdgeInsets.fromLTRB(24, 12, 24, 100),
-              itemCount: 7,
+              itemCount: products.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 12,
@@ -57,7 +82,7 @@ class _CashierPageState extends State<CashierPage> {
                 childAspectRatio: 3 / 4,
               ),
               itemBuilder: (context, index) {
-                return CardProduct();
+                return CardProduct(data: products[index]);
               },
             ),
           ),

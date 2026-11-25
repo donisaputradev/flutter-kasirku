@@ -49,21 +49,21 @@ class _ProductPageState extends State<ProductPage> {
               icon: Icon(LucideIcons.search, size: 22),
             ),
           ),
-          Expanded(
-            child: GridView.builder(
-              padding: const EdgeInsets.fromLTRB(24, 12, 24, 100),
-              itemCount: 7,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 12,
-                crossAxisSpacing: 12,
-                childAspectRatio: 3 / 4,
-              ),
-              itemBuilder: (context, index) {
-                return CardProduct(isProductPage: true);
-              },
-            ),
-          ),
+          // Expanded(
+          //   child: GridView.builder(
+          //     padding: const EdgeInsets.fromLTRB(24, 12, 24, 100),
+          //     itemCount: 7,
+          //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          //       crossAxisCount: 2,
+          //       mainAxisSpacing: 12,
+          //       crossAxisSpacing: 12,
+          //       childAspectRatio: 3 / 4,
+          //     ),
+          //     itemBuilder: (context, index) {
+          //       return CardProduct(isProductPage: true,);
+          //     },
+          //   ),
+          // ),
         ],
       ),
     );
