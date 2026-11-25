@@ -121,12 +121,20 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  if (_formKey.currentState?.validate() == true) {
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (_) => MainPage()),
-                      (_) => false,
+                  if (isAccept != true) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Syarat dan kebijakan wajib disetujui.'),
+                      ),
                     );
+                  } else {
+                    if (_formKey.currentState?.validate() == true) {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (_) => MainPage()),
+                        (_) => false,
+                      );
+                    }
                   }
                 },
                 child: Text('Daftar'),
